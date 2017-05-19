@@ -106,11 +106,17 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
       $scope.myCartValues.push(1);
       $scope.myCartPrice.push(item.price);
     }
+    saveCart("titles", $scope.myCart);
+    saveCart("amount", $scope.myCartValues);
+    saveCart("prices", $scope.myCartPrice);
   };
 
   $scope.plusItem = function (title) {
     var index = $scope.myCart.indexOf(title);
     $scope.myCartValues[index] += 1;
+    saveCart("titles", $scope.myCart);
+    saveCart("amount", $scope.myCartValues);
+    saveCart("prices", $scope.myCartPrice);
   };
 
   $scope.minusItem = function (title) {
@@ -120,6 +126,9 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
       $scope.myCart.splice(index, 1);
       $scope.myCartValues.splice(index, 1);
     }
+    saveCart("titles", $scope.myCart);
+    saveCart("amount", $scope.myCartValues);
+    saveCart("prices", $scope.myCartPrice);
   };
 
   $scope.getPrice = function () {
