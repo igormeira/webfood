@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="webFood" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="webFood" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="webFood" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="webFood" class="no-js"> <!--<![endif]-->
+<head ng-app="webFood">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>WebFood</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="app.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script data-semver="1.6.4" src="https://code.angularjs.org/1.6.4/angular.js" data-require="angular.js@1.6.x"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div ng-controller="jsonCtrl">
+
+    <div id="begin">
+      <!--Logo-->
+      <div class="logo" align="center">
+        <img src="images/logo.png">
+      </div>
+
+      <!--Search Field-->
+      <div class="search" align="center">
+        <h4>Search for an item:</h4>
+        <input type="text" ng-model="search">
+      </div>
+
+      <!--Menu-->
+      <div>
+        <nav id="menu" class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul>
+              <li><a href="javascript:void(0)" ng-click="getItensList('salad')"> <img src="images/salad.png"><p>Salad</p></a></li>
+              <li><a href="javascript:void(0)" ng-click="getItensList('pizza')"><img src="images/pizza.png"><p>Pizza</p></a></li>
+              <li><a href="javascript:void(0)" ng-click="getItensList('chinese')"><img src="images/chinese-food.png"><p>Chinese</p></a></li>
+              <li><a href="javascript:void(0)" ng-click="getItensList('burgers')"><img src="images/burger.png"><p>Burgers</p></a></li>
+              <li><a href="javascript:void(0)" ng-click="getItensList('beverage')"><img src="images/beverage.jpg"><p>Beverage</p></a></li>
+              <li><a href="javascript:void(0)" ng-click="getItensList('all')"><img src="images/all.png"><p>All</p></a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!--Content-->
+    <div class="container">
+      <div class="row">
+        <!--Food List-->
+        <div class="col-sm-7">
+
+          <!--List-->
+          <div class="list">
+            <ul>
+              <li ng-repeat="item in menuList | filter:search">
+                <img ng-src="{{ getImage(item) }}">
+                <p>
+                  {{ item.title }}
+                  <br>
+                  <b>Price:</b> ${{ item.price}}
+                </p>
+                <input type="image" src="images/cart.png" alt="Submit" ng-click="addItem(item)">
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <!--Order Box-->
+        <div class="col-sm-5" align="center">
+          <div class="box-cart">
+            <h3>Your Cart:</h3>
+            <!--Scroll List with Items-->
+            <div class="box-items panel panel-default">
+              <div class="panel-body" ng-repeat="item in myCart">
+                <p>{{ myCartValues[$index] }}x {{ item }}</p>
+                <input type="image" src="images/plus.png" alt="Submit" ng-click="plusItem(item)">
+                <input type="image" src="images/minus.png" alt="Submit" ng-click="minusItem(item)">
+              </div>
+            </div>
+            <h4>Total: ${{ getPrice() }}</h4>
+            <button ng-click="toggleModal()">Proceed to Checkout</button>
+            <modal show='modalShown' width='70%' height='60%'>
+              <div ng-repeat="item in myCart">
+                <p>{{ myCartValues[$index] }}x {{ item }}</p>
+              </div>
+              <h4>Total: ${{ getPrice() }}</h4>
+              <button class="btn btn-success" ng-click="toggleModal()">BUY</button>
+            </modal>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
