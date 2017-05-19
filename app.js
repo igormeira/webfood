@@ -35,9 +35,9 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
 
   $scope.menu = {};
   $scope.menuList = [];
-  $scope.myCart = [];
-  $scope.myCartValues = [];
-  $scope.myCartPrice = [];
+  $scope.myCart = loadCart("titles");
+  $scope.myCartValues = loadCart("amount");
+  $scope.myCartPrice = loadCart("prices");
   $scope.modalShown = false;
 
   $http({
@@ -54,7 +54,9 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
   });
 
   //Save the cart
-  $window.onbeforeunload = save();
+  $window.onbeforeunload = saveCart("titles", $scope.myCart);
+  $window.onbeforeunload = saveCart("amount", $scope.myCartValues);
+  $window.onbeforeunload = saveCart("prices", $scope.myCartPrice);
 
   /**************************************************/
   /*				   Functions	    		    */
@@ -152,9 +154,12 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
     return false;
   }
   
-  function save() {
-    localStorage.setItem("titles", JSON.stringify($scope.myCart));
-    localStorage.setItem("amount", JSON.stringify($scope.myCartValues));
+  function saveCart(key, obj) {
+    return localStorage.setItem(key, JSON.stringify(obj));
+  }
+
+  function loadCart(key) {
+    return JSON.parse(localStorage.getItem(key));
   }
 
 });
