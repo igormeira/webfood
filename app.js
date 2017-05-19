@@ -4,7 +4,7 @@
 var webFood  =  angular.module('webFood', []);
 
 /**************************************************/
-/*					 DIRECTIVES      		      */
+/*					          DIRECTIVES         		      */
 /**************************************************/
 webFood.directive('modal', function() {
   return {
@@ -29,7 +29,7 @@ webFood.directive('modal', function() {
 });
 
 /**************************************************/
-/*					 CONTROLLERS     		      */
+/*					         CONTROLLERS        		      */
 /**************************************************/
 webFood.controller('jsonCtrl', function($scope, $http, $window){
 
@@ -52,11 +52,6 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
     $scope.menu = response.data.food;
     populateMenu();
   });
-
-  //Save the cart
-  $window.onbeforeunload = saveCart("titles", $scope.myCart);
-  $window.onbeforeunload = saveCart("amount", $scope.myCartValues);
-  $window.onbeforeunload = saveCart("prices", $scope.myCartPrice);
 
   /**************************************************/
   /*				   Functions	    		    */
@@ -164,11 +159,11 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
   }
   
   function saveCart(key, obj) {
-    return localStorage.setItem(key, JSON.stringify(obj));
+    return window.localStorage.setItem(key, JSON.stringify(obj));
   }
 
   function loadCart(key) {
-    return JSON.parse(localStorage.getItem(key));
+    return JSON.parse(window.localStorage.getItem(key));
   }
 
 });
