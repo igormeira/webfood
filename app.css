@@ -68,11 +68,16 @@
 /**************************************************/
 /*				   SEARCH FIELD	  			      */
 /**************************************************/
-.search{
+.search {
   margin-top: 1em;
   margin-bottom: 0.5em;
 }
 
+@media (min-width: 480px) {
+  .search input {
+    width: 125px;
+  }
+}
 
 /**************************************************/
 /*					   MENU LIST    		      */
@@ -124,6 +129,7 @@
   width: 325px;
   border: 2px solid black;
   margin-top: 1em;
+  margin-bottom: 3em;
 }
 
 .box-cart p {
@@ -169,7 +175,7 @@
   /* A centered div above the overlay with a box shadow. */
   z-index:10000;
   position: absolute;
-  width: 50%; /* Default */
+  width: 50%;
 
   /* Center the dialog */
   top: 50%;
