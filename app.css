@@ -73,7 +73,7 @@
   margin-bottom: 0.5em;
 }
 
-@media (min-width: 480px) {
+@media (max-width: 480px) {
   .search input {
     width: 125px;
   }
