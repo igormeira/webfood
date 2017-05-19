@@ -126,9 +126,9 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
     for (var i = 0; i < $scope.myCart.length; i++) {
       title = $scope.myCart[i];
       amount = $scope.myCartValues[i];
-      totalPrice += parseFloat(amount * $scope.myCartPrice[i]).toFixed(2);
+      totalPrice += (amount * $scope.myCartPrice[i]);
     }
-    return totalPrice;
+    return totalPrice.round(2);
   };
 
   $scope.toggleModal = function() {
