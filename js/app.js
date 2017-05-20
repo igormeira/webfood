@@ -60,19 +60,19 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
     var src = "";
     switch (item.cuisine) {
       case "salad":
-        src = "../images/salad.png";
+        src = "/images/salad.png";
         break;
       case "pizza":
-        src = "../images/pizza.png";
+        src = "/images/pizza.png";
         break;
       case "chinese":
-        src = "../images/chinese-food.png";
+        src = "/images/chinese-food.png";
         break;
       case "burgers":
-        src = "../images/burger.png";
+        src = "/images/burger.png";
         break;
       case "beverage":
-        src = "../images/beverage.jpg"
+        src = "/images/beverage.jpg"
         break;
     }
     return src;
