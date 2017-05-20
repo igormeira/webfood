@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="webFood" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="webFood" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="webFood" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="webFood" class="no-js"> <!--<![endif]-->
 <head ng-app="webFood">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +7,7 @@
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
   <link rel="icon" href="images/logo.png">
   <link rel="stylesheet" href="app.css">
@@ -20,23 +17,26 @@
   <script src="angular/angular.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="app.js"></script>
+
 </head>
 <body>
   <div ng-controller="jsonCtrl">
 
     <div id="begin">
-      <!--Logo-->
+      <!--[Logo]-->
       <div class="logo" align="center">
         <img src="images/logo.png">
       </div>
+      <!--[End Logo]-->
 
-      <!--Search Field-->
+      <!--[Search Field]-->
       <div class="search" align="center">
         <h4>Search for an item:</h4>
         <input type="text" ng-model="search">
       </div>
+      <!--[End Search Field]-->
 
-      <!--Menu-->
+      <!--[Menu]-->
       <div>
         <nav id="menu" class="navbar navbar-default">
           <div class="container-fluid">
@@ -51,15 +51,16 @@
           </div>
         </nav>
       </div>
+      <!--[End Menu]-->
     </div>
 
-    <!--Content-->
+    <!--[Content]-->
     <div class="container">
       <div class="row">
-        <!--Food List-->
+        <!--[Food List]-->
         <div class="col-sm-7">
 
-          <!--List-->
+          <!--[List]-->
           <div class="list">
             <ul>
               <li ng-repeat="item in menuList | filter:search">
@@ -73,13 +74,15 @@
               </li>
             </ul>
           </div>
-
+          <!--[End List]-->
         </div>
-        <!--Order Box-->
+        <!--[End Food List]-->
+
+        <!--[Order Box]-->
         <div class="col-sm-5" align="center">
           <div class="box-cart">
             <h3>Your Cart:</h3>
-            <!--Scroll List with Items-->
+            <!--[Item Box]-->
             <div class="box-items panel panel-default">
               <div class="panel-body" ng-repeat="item in myCart">
                 <p>{{ myCartValues[$index] }}x {{ item }}</p>
@@ -87,6 +90,7 @@
                 <input type="image" src="images/minus.png" alt="Submit" ng-click="minusItem(item)">
               </div>
             </div>
+            <!--[End Item Box]-->
             <h4>Total: ${{ getPrice() }}</h4>
             <button ng-click="toggleModal()">Proceed to Checkout</button>
             <modal show='modalShown' width='70%' height='60%'>
@@ -98,13 +102,11 @@
             </modal>
           </div>
         </div>
+        <!--[End Order Box]-->
       </div>
     </div>
+    <!--End Content-->
   </div>
-
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
 
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>

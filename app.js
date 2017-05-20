@@ -54,7 +54,7 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
   });
 
   /**************************************************/
-  /*				   Functions	    		    */
+  /*				            Functions     	    		    */
   /**************************************************/
   $scope.getImage = function(item){
     var src = "";
@@ -136,7 +136,7 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
   };
 
   /**************************************************/
-  /*				  Aux. Functions			    */
+  /*				         Aux. Functions			            */
   /**************************************************/
   function populateMenu() {
     for (var i = 0; i < $scope.menu.length; i++) $scope.menuList.push($scope.menu[i]);
