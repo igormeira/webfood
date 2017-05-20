@@ -159,11 +159,11 @@ webFood.controller('jsonCtrl', function($scope, $http, $window){
   }
   
   function saveCart(key, obj) {
-    return window.localStorage.setItem(key, JSON.stringify(obj)) || [];
+    return window.sessionStorage.setItem(key, JSON.stringify(obj)) || [];
   }
 
   function loadCart(key) {
-    return JSON.parse(window.localStorage.getItem(key)) || [];
+    return JSON.parse(window.sessionStorage.getItem(key)) || [];
   }
 
 });
